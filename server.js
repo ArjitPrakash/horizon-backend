@@ -39,7 +39,7 @@ app.post("/generate", async (req, res) => {
       data.candidates?.[0]?.content?.parts?.map((p) => p.text).join("") ||
       "No response from AI.";
 
-    res.json({ text });
+    res.json({ text: text || "No response from AI." });
   } catch (error) {
     res.status(500).json({ error: "Server error." });
   }
