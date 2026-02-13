@@ -3,6 +3,7 @@ const fetch = require("node-fetch");
 const cors = require("cors");
 
 const app = express();
+app.use(express.static("public"));
 app.use(cors());
 app.use(express.json());
 
@@ -44,6 +45,9 @@ app.post("/generate", async (req, res) => {
   }
 });
 
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/public/index.html");
+});
 const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => {
   console.log("Server running on port " + PORT);
